@@ -64,21 +64,23 @@ module VoightKampff
     end
 
     private
-    
+
     def load_agents
       @@agents ||= []
       if @@agents.empty?
-      
-        base_paths = [VoightKampff.root]
-        base_paths << Rails.root if defined? Rails
+
         rel_path = ['config', 'user_agents.yml']
-        
-        base_paths.any? do |base_path|
-          if File.exists? base_path.join(*rel_path)
-            @@agents = YAML.load(File.open(base_path.join(*rel_path), 'r'))
+
+        if defined? Rails
+          path = Rails.root.join(*rel_path)
+          unless File.exists? path
+            path = nil
           end
         end
-        
+
+        path ||= VoightKampff.root.join(*rel_path)
+
+        @@agents = YAML.load(File.open(path, 'r'))
       end
     end
 
