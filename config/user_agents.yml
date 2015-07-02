@@ -11668,6 +11668,11 @@
   string: webmeasurement-bot, http://rvs.informatik.uni-leipzig.de
 - string_match: exact
   types: 
+  - crawler
+  description: Unknown robot from Leipzig University (Germany) faculty for computer science
+  string:  UniLeipzigASV, http://corpora.informatik.uni-leipzig.de
+- string_match: exact
+  types: 
   - downloader
   description: WebMiner bulk file downloader
   string: WebMiner/x.x [en] (Win98; I)
